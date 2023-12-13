@@ -1,0 +1,20 @@
+$firstOrange: rgba(255, 184, 0, 1);
+
+$secondOrange: rgba(255, 161, 51, 1);
+
+$thirdOrange: rgba(255, 138, 0, 1);
+
+.firstOrangeColor {
+  color: $firstOrange;
+  margin-right: 3px;
+}
+
+.secondOrangeColor {
+  color: $secondOrange;
+  margin-right: 3px;
+}
+
+.thirdOrangeColor {
+  color: $thirdOrange;
+  margin-right: 3px;
+}

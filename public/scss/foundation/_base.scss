@@ -51,16 +51,3 @@ a:hover img {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-.main {
-  padding: 10px 0px;
-  @include md {
-  }
-  @include lg {
-    margin: 0 auto;
-    width: 1000px;
-  }
-  @include xl {
-    margin: 0 auto;
-    width: 1200px;
-  }
-}
