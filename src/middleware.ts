@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 function middleware1(request: NextRequest) {
   const url = request.url;
   console.log("middleware1 =>", { url });
-
   return NextResponse.next();
 }
 

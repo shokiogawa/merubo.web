@@ -9,7 +9,6 @@ import MeruboIcon from "../components/MeruboIcon";
 
 const Home: NextPage = () => {
   const { height, width } = useWindowsSize();
-
   return (
     <main>
       <Box
