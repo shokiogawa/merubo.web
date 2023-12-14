@@ -15,7 +15,6 @@ const MessageBordTemplateList = () => {
           {isOpenForm ? "閉じる" : "テンプレートを追加する"}
         </Button>
       </div>
-      {/* {isOpenForm ? <CreateMessageBordTempComponent /> : <></>} */}
     </section>
   );
 };
