@@ -29,7 +29,6 @@ const CreateMessage: NextPage = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { isValid, errors },
   } = useForm<InputData>();
   const [uploadFile, setUploadFile] = useState<File>();
@@ -78,7 +77,6 @@ const CreateMessage: NextPage = () => {
   const onSubmit: SubmitHandler<InputData> = async (data): Promise<void> => {
     setIsLoading(true);
     if (messageBordId) {
-      console.log("start set data to firebase");
       setIsLoading(true);
       try {
         const messageId = v4();
@@ -86,12 +84,10 @@ const CreateMessage: NextPage = () => {
         let image;
         if (avaterFile) {
           const filePath = `message_bords/${messageBordId}/messages/${messageId}/thumbnail/${avaterFile.name}`;
-          console.log("start avaterFile upload");
           thumbnail = await uploadImage(avaterFile, filePath, true);
         }
         if (uploadFile) {
           const filePath = `message_bords/${messageBordId}/messages/${messageId}/image/${uploadFile.name}`;
-          console.log("start uploadFile upload");
           image = await uploadImage(uploadFile, filePath, true);
         }
         const currentDate = new Date();

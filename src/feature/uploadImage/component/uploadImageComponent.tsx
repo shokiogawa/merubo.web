@@ -12,7 +12,6 @@ const UploadImageComponent: React.FC<Props> = ({ id, onChange }) => {
   const [imageSrc, setImageSrc] = useState<string>("");
 
   const handleImagePreview = async (event: ChangeEvent<HTMLInputElement>) => {
-    console.log("handleImagePreview");
     const { name, files } = event.target;
     if (files == null) {
       return;

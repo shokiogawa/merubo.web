@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import { firebaseAuth } from "../lib/firebase";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const useIsLogin = (redirectPath: string) => {
+  const router = useRouter();
   useEffect(() => {
+    // 認証
     firebaseAuth.onAuthStateChanged(async (user) => {
       if (user) {
-        console.log("ログインしてます。");
       } else {
-        redirect(redirectPath);
+        router.push(redirectPath);
       }
     });
-  });
+  }, [redirectPath, router]);
 };
 
 export default useIsLogin;

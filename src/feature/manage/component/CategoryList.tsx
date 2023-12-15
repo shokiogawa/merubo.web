@@ -22,12 +22,7 @@ const CategoryListComponent = () => {
             寄せ書きテンプレート一覧
           </Typography>
         </Typography>
-        <Tabs
-          sx={{ paddingTop: "20px" }}
-          onChange={(event) => {
-            console.log(event?.target);
-          }}
-        >
+        <Tabs sx={{ paddingTop: "20px" }} onChange={(event) => {}}>
           <TabList>
             {categoryDatas &&
               categoryDatas.map((category) => (

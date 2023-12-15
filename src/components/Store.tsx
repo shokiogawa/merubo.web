@@ -1,5 +1,4 @@
 import { Box } from "@mui/joy";
-import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import AppStore from "../../public/image/apple_iphone.svg";
@@ -28,7 +27,7 @@ const Store = () => {
           >
             <Image
               className="image"
-              src="/../public/image/google.png"
+              src="/image/google.png"
               alt="Google Store画像"
               width="220"
               height="60"

@@ -5,7 +5,7 @@ const MeruboIcon = () => {
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Image
-          src={"/../public/image/merubo_icon_figure.png"}
+          src={"/image/merubo_icon_figure.png"}
           alt="Meruboのアイコン"
           width="120"
           height="120"

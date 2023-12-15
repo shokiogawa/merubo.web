@@ -14,8 +14,8 @@ function middleware2(request: NextRequest) {
 }
 
 export function middleware(request: NextRequest) {
-  middleware1(request);
-  middleware2(request);
+  // middleware1(request);
+  // middleware2(request);
 }
 
 export const config = {

@@ -1,5 +1,4 @@
 import { Box, Container, Typography } from "@mui/joy";
-import Link from "next/link";
 import Store from "./Store";
 import MeruboIcon from "./MeruboIcon";
 export const Footer = () => {
