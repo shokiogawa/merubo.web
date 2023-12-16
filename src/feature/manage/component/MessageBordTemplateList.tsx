@@ -1,6 +1,4 @@
 import { useMessageBordTemplateListSWR } from "../hooks/useMessageBordTemplateSWR";
-import { useRouter } from "next/router";
-import { Great_Vibes } from "next/font/google";
 import { Button, Grid, ListItem } from "@mui/joy";
 import MessageBordTop from "./MessageBordTop";
 import CreateMessageBordTemp from "./CreateMessageBordTemp";

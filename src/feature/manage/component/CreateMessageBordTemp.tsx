@@ -18,7 +18,6 @@ import {
   Option,
   Select,
   Stack,
-  TextField,
   Typography,
 } from "@mui/joy";
 import MessageBordTop from "./MessageBordTop";
@@ -57,12 +56,10 @@ const CreateMessageBordTemp: React.FC<Props> = ({
 
   // メインメッセージ
   const handlerMainMessage = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
     setMainMessage(event.target.value);
   };
   // メインメッセージのサイズ
   const handlerMainMessageSize = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
     setMainMessageSize(Number(event.target.value));
   };
 
@@ -100,7 +97,6 @@ const CreateMessageBordTemp: React.FC<Props> = ({
     if (!uploadImageFile) return;
 
     try {
-      console.log("アップロードスタート");
       setMessage("登録中。。。。。");
       const tempMessageBordId = createRandum(19);
       // 背景画像

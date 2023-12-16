@@ -1,11 +1,9 @@
-import { MessageBord } from "../../../types/MessageBord";
 import Image from "next/image";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import { Great_Vibes } from "next/font/google";
-import { Grid, ListItem } from "@mui/joy";
 
 type Props = {
   mainMessage: string;

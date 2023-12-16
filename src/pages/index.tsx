@@ -1,15 +1,11 @@
 import { Box, Button, Typography } from "@mui/joy";
 import type { NextPage } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import useWindowsSize from "../hooks/UseWindowsSize";
 import CircleDesign from "../components/CircleDesign";
 import Store from "../components/Store";
 import MeruboIcon from "../components/MeruboIcon";
 
 const Home: NextPage = () => {
-  const { height, width } = useWindowsSize();
-
   return (
     <main>
       <Box
@@ -19,7 +15,7 @@ const Home: NextPage = () => {
       >
         {/* 背景デザインエリア */}
         <CircleDesign
-          src={"/../public/image/firstcircle.png"}
+          src={"/image/firstcircle.png"}
           alt="小円"
           width={200}
           height={200}
@@ -28,7 +24,7 @@ const Home: NextPage = () => {
           zIndex={-99}
         />
         <CircleDesign
-          src={"/../public/image/firstcircle.png"}
+          src={"/image/firstcircle.png"}
           alt="小円"
           width={200}
           height={200}
@@ -37,7 +33,7 @@ const Home: NextPage = () => {
           zIndex={-99}
         />
         <CircleDesign
-          src={"/../public/image/grad_circle_org2.png"}
+          src={"/image/grad_circle_org2.png"}
           alt="グラデーション円"
           width={500}
           height={500}
@@ -46,7 +42,7 @@ const Home: NextPage = () => {
           zIndex={-99}
         />
         <CircleDesign
-          src={"/../public/image/grad_circle_org.png"}
+          src={"/image/grad_circle_org.png"}
           alt="グラデーション円"
           width={500}
           height={500}
@@ -55,13 +51,13 @@ const Home: NextPage = () => {
           zIndex={-99}
         />
         {/* コンソール */}
-        <Box component="div" sx={{ height: "50px", textAlign: "right" }}>
+        {/* <Box component="div" sx={{ height: "50px", textAlign: "right" }}>
           <Button sx={{ color: "white", padding: "10px", marginTop: "10px" }}>
             <Link href={"/manage"}>
               <p>コンソール画面へ</p>
             </Link>
           </Button>
-        </Box>
+        </Box> */}
         {/* メイン画面 */}
         <Box
           component="div"
@@ -196,7 +192,7 @@ const Home: NextPage = () => {
             sx={{ display: "flex", justifyContent: "center" }}
           >
             <Image
-              src="/../public/image/manage_message_bord.png"
+              src="/image/manage_message_bord.png"
               alt="寄せ書き管理"
               width="250"
               height="500"
@@ -225,7 +221,7 @@ const Home: NextPage = () => {
             sx={{ display: "flex", justifyContent: "center" }}
           >
             <Image
-              src="/../public/image/create_message_bord.png"
+              src="/image/create_message_bord.png"
               alt="寄せ書き作成"
               width="250"
               height="500"

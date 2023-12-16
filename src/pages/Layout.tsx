@@ -5,7 +5,7 @@ type LayoutProps = Required<{
   readonly children: ReactElement;
 }>;
 //LayoutProps内のchildrenを指定。
-export const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Header />
@@ -14,3 +14,5 @@ export const Layout = ({ children }: LayoutProps) => {
     </>
   );
 };
+
+export default Layout;

@@ -1,18 +1,7 @@
 import { useCategoryListSWR } from "../hooks/useCategorySWR";
-import Link from "next/link";
-import {
-  Box,
-  Button,
-  Tab,
-  TabList,
-  TabPanel,
-  Tabs,
-  Typography,
-} from "@mui/joy";
+import { Tab, TabList, TabPanel, Tabs, Typography } from "@mui/joy";
 import MessageBordTemplateList from "./MessageBordTemplateList";
 import { Category } from "../../../types/Category";
-import CreateMessageBordTemp from "./CreateMessageBordTemp";
-import { useState } from "react";
 
 const CategoryListComponent = () => {
   const { categoryDatas, error } = useCategoryListSWR();
@@ -33,12 +22,7 @@ const CategoryListComponent = () => {
             寄せ書きテンプレート一覧
           </Typography>
         </Typography>
-        <Tabs
-          sx={{ paddingTop: "20px" }}
-          onChange={(event) => {
-            console.log(event?.target);
-          }}
-        >
+        <Tabs sx={{ paddingTop: "20px" }} onChange={(event) => {}}>
           <TabList>
             {categoryDatas &&
               categoryDatas.map((category) => (

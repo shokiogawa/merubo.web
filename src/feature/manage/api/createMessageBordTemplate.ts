@@ -1,6 +1,5 @@
 import { firebaseStore } from "../../../lib/firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { Message, messageConverter } from "../../../types/Message";
+import { doc, setDoc } from "firebase/firestore";
 import { MessageBord, messageBordConverter } from "../../../types/MessageBord";
 
 export const createMessageBordTemplate = async (
@@ -19,6 +18,6 @@ export const createMessageBordTemplate = async (
       console.log("成功");
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
