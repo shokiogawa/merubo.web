@@ -32,3 +32,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# 【要件定義】
+
+## 【要求】
+
+- 概要
+  ユーザーがプロダクトに対する意見を投稿する機能が欲しい。
+  なお、管理者は、LINE などのチャットで確認できるようにすること。(メールではない)
+
+- 目的
+  お客様の意見を聞き、プロダクトの改善を行うため。
+
+- 背景
+  現在、お客様の意見を反映する機能がない。
+  そのため、ユーザーがどう思っているのか確認できない。
+  ユーザーの意見を聞くためん、お問合せフォーム的なものを用意して、ユーザーの意見をプロダクトに活かしたい。

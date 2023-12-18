@@ -1,9 +1,9 @@
 import { Box, Button, Typography } from "@mui/joy";
 import type { NextPage } from "next";
 import Image from "next/image";
-import CircleDesign from "../components/CircleDesign";
 import Store from "../components/Store";
 import MeruboIcon from "../components/MeruboIcon";
+import CircleDesign from "../feature/cooporate/components/CircleDesign";
 
 const Home: NextPage = () => {
   return (

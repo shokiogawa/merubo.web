@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Disallow:
+
+# Host
+Host: https://merubo-web.vercel.app/
+
+# Sitemaps
+Sitemap: https://merubo-web.vercel.app/sitemap.xml
