@@ -3,7 +3,7 @@ User-agent: *
 Disallow:
 
 # Host
-Host: https://merubo-web.vercel.app/
+Host: https://www.merubo.jp
 
 # Sitemaps
-Sitemap: https://merubo-web.vercel.app/sitemap.xml
+Sitemap: https://www.merubo.jp/sitemap.xml
