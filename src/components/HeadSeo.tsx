@@ -1,14 +1,12 @@
 import { NextPage } from "next";
 import Head from "next/head";
-
-export const HeadSeo: NextPage = () => {
+const HeadSeo: NextPage = () => {
   return (
     <>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width" />
         <title>{"Merubo | 寄せ書き作成 & 管理アプリ"}</title>
-        <meta name="keywords">{"寄せ書き,寄せ書きアプリ,Merubo,メルボ"}</meta>
         <meta
           name="description"
           content={
@@ -49,3 +47,5 @@ export const HeadSeo: NextPage = () => {
     </>
   );
 };
+
+export default HeadSeo;
