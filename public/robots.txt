@@ -3,7 +3,7 @@ User-agent: *
 Disallow:
 
 # Host
-Host: https://enlioo.com
+Host: https://merubo-web.vercel.app/
 
 # Sitemaps
-Sitemap: https://enlioo.com/sitemap.xml
+Sitemap: https://merubo-web.vercel.app/sitemap.xml
