@@ -15,8 +15,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { uploadImage } from "../../feature/uploadImage/api/uploadImage";
 import { Message } from "../../types/Message";
 import createMessage from "../../feature/message/api/createMessage";
-import ThumbnailUpload from "../../components/ThumbnailUpload";
-import ImageUpload from "../../components/ImageUpload";
+import ThumbnailUpload from "../../feature/create_message/components/ThumbnailUpload";
+import ImageUpload from "../../feature/create_message/components/ImageUpload";
 import { useMessageBordSWR } from "../../feature/messageBord/hooks/useMessageBordSWR";
 type InputData = {
   userName: string;
