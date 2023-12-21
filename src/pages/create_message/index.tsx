@@ -18,6 +18,9 @@ import createMessage from "../../feature/message/api/createMessage";
 import ThumbnailUpload from "../../feature/create_message/components/ThumbnailUpload";
 import ImageUpload from "../../feature/create_message/components/ImageUpload";
 import { useMessageBordSWR } from "../../feature/messageBord/hooks/useMessageBordSWR";
+import { Typography } from "@mui/joy";
+import { Box } from "@mui/material";
+import useWindowsSize from "../../hooks/UseWindowsSize";
 type InputData = {
   userName: string;
   content: string;
@@ -100,13 +103,15 @@ const CreateMessage: NextPage = () => {
           createdAt: currentDate,
           updatedAt: currentDate,
         };
-        await createMessage("", message);
+        await createMessage(messageBordId, message);
+        setMessage("メッセージの送信に成功しました。");
       } catch (err) {
         setMessage(
           "メッセージの送信に失敗しました。少し時間を開け、再度送信してください。"
         );
-        setIsLoading(false);
         throw err;
+      } finally {
+        setIsLoading(false);
       }
     } else {
       setMessage("URLをご確認の上再度送信してください");
@@ -115,21 +120,36 @@ const CreateMessage: NextPage = () => {
   };
   const { messageBordData, error } = useMessageBordSWR(messageBordId);
   if (error) return <div>エラーが発生しました</div>;
-  if (!messageBordData) return <div>loading...</div>;
+  if (!messageBordData)
+    return (
+      <Box sx={{ height: "700px", textAlign: "center", paddingTop: "100px" }}>
+        データ取得中。。。
+      </Box>
+    );
   return (
     <>
       {messageBordData.status === "edit" ? (
         <section className="merubo-section">
           <div className="merubo-title">
-            <h2 className="title">
+            <Typography
+              component="h2"
+              sx={{ padding: "5px", textAlign: "center", fontSize: "20px" }}
+              className="title"
+            >
               {messageBordData?.receiverUserName}
               さんへ{messageBordData.category}のお祝いを送りましょう
-            </h2>
-            <p className="text">メッセージを追加</p>
+            </Typography>
+            <Typography
+              sx={{ fontSize: "15px", paddingTop: "20px" }}
+              component="p"
+              className="text"
+            >
+              メッセージを追加
+            </Typography>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="merubo-form">
             <ul className="items">
-              <li className="item">
+              <Box component="li" className="item">
                 <label htmlFor="userName">お名前</label>
                 <input
                   id="userName"
@@ -139,15 +159,20 @@ const CreateMessage: NextPage = () => {
                   placeholder="自分の名前を入力"
                 />
                 {errors.userName && <span>名前が入力されていません。</span>}
-              </li>
+              </Box>
 
-              <li>
-                <p>あなたの写真</p>
+              <Box component="li" sx={{ margin: "0 auto", width: "100px" }}>
+                <Typography
+                  component="p"
+                  sx={{ fontSize: "15px", paddingBottom: "5px" }}
+                >
+                  あなたの写真
+                </Typography>
                 <ThumbnailUpload
                   id={"avater"}
                   onChange={handleSetThumbnailImage}
                 />
-              </li>
+              </Box>
 
               <li className="item">
                 <label htmlFor="content">メッセージ</label>
@@ -172,7 +197,7 @@ const CreateMessage: NextPage = () => {
                 <p>
                   送信ボタンを押すと、
                   <Link href={"/terms"}>利用規約</Link>
-                  と、{" "}
+                  と、
                   <Link href={"/privacy_policy"}>プライバシーポリシー</Link>
                   に同意したことになります。
                 </p>
