@@ -14,13 +14,12 @@ import {
 import { SubmitHandler, useForm } from "react-hook-form";
 import { uploadImage } from "../../feature/uploadImage/api/uploadImage";
 import { Message } from "../../types/Message";
-import createMessage from "../../feature/message/api/createMessage";
+import createMessage from "../../feature/create_message/api/createMessage";
 import ThumbnailUpload from "../../feature/create_message/components/ThumbnailUpload";
 import ImageUpload from "../../feature/create_message/components/ImageUpload";
 import { useMessageBordSWR } from "../../feature/messageBord/hooks/useMessageBordSWR";
 import { Typography } from "@mui/joy";
 import { Box } from "@mui/material";
-import useWindowsSize from "../../hooks/UseWindowsSize";
 type InputData = {
   userName: string;
   content: string;
