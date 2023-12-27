@@ -1,6 +1,6 @@
 import { useMessageBordTemplateListSWR } from "../hooks/useMessageBordTemplateSWR";
 import { Button, Grid, ListItem } from "@mui/joy";
-import MessageBordTop from "./MessageBordTop";
+import MessageBordTop from "../../../components/MessageBordTop";
 import CreateMessageBordTemp from "./CreateMessageBordTemp";
 import { useState } from "react";
 

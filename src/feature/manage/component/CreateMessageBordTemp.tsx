@@ -20,7 +20,7 @@ import {
   Stack,
   Typography,
 } from "@mui/joy";
-import MessageBordTop from "./MessageBordTop";
+import MessageBordTop from "../../../components/MessageBordTop";
 
 type Props = {
   isOpen: boolean;

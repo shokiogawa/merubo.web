@@ -4,6 +4,7 @@ import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import { Great_Vibes } from "next/font/google";
+import { Box } from "@mui/joy";
 
 type Props = {
   mainMessage: string;
@@ -59,7 +60,7 @@ const MessageBordTop: React.FC<Props> = ({
           }}
         ></Typography>
         {/* メッセージ部分 */}
-        <Typography
+        <Box
           component="div"
           sx={{
             display: "flex",
@@ -90,7 +91,7 @@ const MessageBordTop: React.FC<Props> = ({
           <Typography component="p" sx={{ display: "block", fontSize: "7px" }}>
             {"寄せ書きのタイトルメッセージが入ります"}
           </Typography>
-        </Typography>
+        </Box>
       </CardContent>
     </Card>
   );
