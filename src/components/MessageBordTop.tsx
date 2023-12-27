@@ -5,6 +5,7 @@ import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import { Great_Vibes } from "next/font/google";
 import { Box } from "@mui/joy";
+import { GreatVidesFonts } from "../utility/fonts";
 
 type Props = {
   mainMessage: string;
@@ -12,12 +13,6 @@ type Props = {
   mainMessageSize: number;
   backgroundImage: string;
 };
-
-const GreatVidesFonts = Great_Vibes({
-  weight: "400",
-  subsets: ["latin"],
-});
-
 // 色のチェック
 const getColor = (colorString: string): string => {
   if (colorString === "orangeAccent") {

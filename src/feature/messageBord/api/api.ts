@@ -21,7 +21,6 @@ import { MessageBordWithMessage } from "../../../types/MessageBordWithMessage";
 export const isExistMessageBord = async (
   messageBordId: string
 ): Promise<boolean> => {
-  console.log("isExistMessageBord");
   const messageBordRef = doc(firebaseStore, "message_bords", messageBordId);
   const isExist = (await getDoc(messageBordRef)).exists();
   return isExist;
