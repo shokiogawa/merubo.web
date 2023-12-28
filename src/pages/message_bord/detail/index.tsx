@@ -10,6 +10,8 @@ import RegisterCodeDialog from "../../../feature/messageBord/component/RegisterC
 import { GreatVidesFonts } from "../../../utility/fonts";
 import { NextPage } from "next";
 import { getColor } from "../../../utility/getColor";
+import { Player } from "@lottiefiles/react-lottie-player";
+import { RevealWrapper } from "next-reveal";
 
 /**
  * 寄せ書きを確認する画面
@@ -61,88 +63,119 @@ const MessageBord: NextPage = () => {
         <>
           <Box component="div" sx={{}}>
             {/* 寄せ書きトップ */}
-            <Box
-              className="top"
-              sx={{
-                height: height,
-                position: "relative",
-                display: "flex",
-              }}
+            <RevealWrapper
+              rotate={{ x: 12, y: 40, z: 0 }}
+              origin="left"
+              delay={200}
+              duration={1000}
+              distance="500px"
+              reset={false}
+              viewOffset={{ top: 25, right: 0, bottom: 10, left: 5 }}
             >
               <Box
+                className="top"
                 sx={{
-                  height: { xs: "40%", md: "50%" },
-                  width: { xs: "90%", md: "50%" },
-                  margin: "auto",
+                  height: height,
                   position: "relative",
+                  display: "flex",
                 }}
               >
+                {/* 中央の文字 */}
                 <Box
-                  component="div"
                   sx={{
-                    height: "100%",
-                    width: "100%",
-                    backgroundColor: "white",
-                    opacity: 0.6,
-                    padding: "10px",
-                    position: "absolute",
-                    zIndex: 99,
-                  }}
-                ></Box>
-                <Box
-                  component="div"
-                  sx={{
-                    display: "flex",
-                    flexFlow: "column",
-                    justifyContent: "space-around",
-                    height: "100%",
-                    width: "100%",
-                    padding: "10px",
-                    textAlign: "center",
-                    position: "absolute",
-                    zIndex: 99,
+                    height: { xs: "40%", md: "50%" },
+                    width: { xs: "90%", md: "50%" },
+                    margin: "auto",
+                    position: "relative",
                   }}
                 >
-                  <Typography
-                    component="p"
-                    sx={{ display: "block", fontSize: "17px" }}
-                  >
-                    {messageBordWithMessage.messageBord.receiverUserName}
-                  </Typography>
-                  <p
-                    className={GreatVidesFonts.className}
-                    style={{
-                      display: "block",
-                      fontSize: "50px",
+                  {/* アニメーション */}
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      zIndex: "99",
+                      // backgroundColor: "red",
+                      height: "100%",
                       width: "100%",
-                      overflowWrap: "break-word",
-                      color: getColor(
-                        messageBordWithMessage.messageBord.mainMessageColor
-                      ),
                     }}
                   >
-                    {messageBordWithMessage.messageBord.mainMessage}
-                  </p>
-                  <Typography
-                    component="p"
-                    sx={{ display: "block", fontSize: "17px" }}
+                    <Player
+                      autoplay
+                      loop
+                      src={messageBordWithMessage.messageBord.animationUrl}
+                      style={{ height: "300px", width: "300px" }}
+                    ></Player>
+                  </Box>
+                  {/* 背景の白 */}
+                  <Box
+                    component="div"
+                    sx={{
+                      height: "100%",
+                      width: "100%",
+                      backgroundColor: "white",
+                      opacity: 0.6,
+                      padding: "10px",
+                      position: "absolute",
+                      zIndex: 99,
+                    }}
+                  ></Box>
+                  {/* 文字の配置 */}
+                  <Box
+                    component="div"
+                    sx={{
+                      display: "flex",
+                      flexFlow: "column",
+                      justifyContent: "space-around",
+                      height: "100%",
+                      width: "100%",
+                      padding: "10px",
+                      textAlign: "center",
+                      position: "absolute",
+                      zIndex: 99,
+                    }}
                   >
-                    {messageBordWithMessage.messageBord.title}
-                  </Typography>
+                    <Typography
+                      component="p"
+                      sx={{ display: "block", fontSize: "17px" }}
+                    >
+                      {messageBordWithMessage.messageBord.receiverUserName}
+                    </Typography>
+                    <p
+                      className={GreatVidesFonts.className}
+                      style={{
+                        display: "block",
+                        fontSize: "50px",
+                        width: "100%",
+                        overflowWrap: "break-word",
+                        color: getColor(
+                          messageBordWithMessage.messageBord.mainMessageColor
+                        ),
+                      }}
+                    >
+                      {messageBordWithMessage.messageBord.mainMessage}
+                    </p>
+                    <Typography
+                      component="p"
+                      sx={{ display: "block", fontSize: "17px" }}
+                    >
+                      {messageBordWithMessage.messageBord.title}
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box
+                  component="div"
+                  sx={{ height: "100%", width: "100%", position: "absolute" }}
+                >
+                  <Image
+                    src={messageBordWithMessage.messageBord.templateImageUrl}
+                    alt=""
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
                 </Box>
               </Box>
-              <Box
-                component="div"
-                sx={{ height: "100%", width: "100%", position: "absolute" }}
-              >
-                <Image
-                  src={messageBordWithMessage.messageBord.templateImageUrl}
-                  alt=""
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </Box>
-            </Box>
+            </RevealWrapper>
+
             {/* メッセージ一覧箇所 */}
             <Box
               component="div"
