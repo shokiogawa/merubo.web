@@ -51,7 +51,7 @@ const MessageBord: NextPage = () => {
       </Box>
     );
   return (
-    <Box component="section" sx={{ height: "700px" }}>
+    <Box component="section" sx={{}}>
       {/* ダイアログ */}
       <RegisterCodeDialog
         isShowDialog={isExist && messageBordWithMessage ? false : true}
