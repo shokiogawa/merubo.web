@@ -8,13 +8,14 @@ import Image from "next/image";
 import MessageArea from "../../../feature/messageBord/component/MessageArea";
 import RegisterCodeDialog from "../../../feature/messageBord/component/RegisterCodeDialog";
 import { GreatVidesFonts } from "../../../utility/fonts";
-import { createRandum } from "../../../utility/createRandum";
+import { NextPage } from "next";
+import { getColor } from "../../../utility/getColor";
 
 /**
  * 寄せ書きを確認する画面
  * @returns
  */
-const MessageBord = () => {
+const MessageBord: NextPage = () => {
   const router = useRouter();
   const messageBordId = router.query.messageBordId as string;
 
@@ -65,7 +66,6 @@ const MessageBord = () => {
               sx={{
                 height: height,
                 position: "relative",
-                backgroundColor: "blue",
                 display: "flex",
               }}
             >
@@ -74,7 +74,6 @@ const MessageBord = () => {
                   height: { xs: "40%", md: "50%" },
                   width: { xs: "90%", md: "50%" },
                   margin: "auto",
-                  backgroundColor: "red",
                   position: "relative",
                 }}
               >
@@ -110,21 +109,20 @@ const MessageBord = () => {
                   >
                     {messageBordWithMessage.messageBord.receiverUserName}
                   </Typography>
-                  <Typography
+                  <p
                     className={GreatVidesFonts.className}
-                    component="p"
-                    sx={{
+                    style={{
                       display: "block",
                       fontSize: "50px",
                       width: "100%",
                       overflowWrap: "break-word",
-                      color:
-                        messageBordWithMessage.messageBord.mainMessageColor,
+                      color: getColor(
+                        messageBordWithMessage.messageBord.mainMessageColor
+                      ),
                     }}
                   >
                     {messageBordWithMessage.messageBord.mainMessage}
-                  </Typography>
-
+                  </p>
                   <Typography
                     component="p"
                     sx={{ display: "block", fontSize: "17px" }}

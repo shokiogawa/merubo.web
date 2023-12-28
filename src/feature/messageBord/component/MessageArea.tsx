@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { Box, Typography, Card, Avatar } from "@mui/joy";
 import Image from "next/image";
 import { Message } from "../../../types/Message";
-import ScrollReveal from "scrollreveal";
 type Props = {
   message: Message;
 };

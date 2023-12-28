@@ -3,22 +3,15 @@ import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
-import { Great_Vibes } from "next/font/google";
 import { Box } from "@mui/joy";
 import { GreatVidesFonts } from "../utility/fonts";
+import { getColor } from "../utility/getColor";
 
 type Props = {
   mainMessage: string;
   mainMessageColor: string;
   mainMessageSize: number;
   backgroundImage: string;
-};
-// 色のチェック
-const getColor = (colorString: string): string => {
-  if (colorString === "orangeAccent") {
-    return "orange";
-  }
-  return colorString;
 };
 
 const MessageBordTop: React.FC<Props> = ({
