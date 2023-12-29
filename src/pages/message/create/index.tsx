@@ -12,15 +12,14 @@ import {
   DialogActions,
 } from "@material-ui/core/";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { uploadImage } from "../../feature/uploadImage/api/uploadImage";
-import { Message } from "../../types/Message";
-import createMessage from "../../feature/message/api/createMessage";
-import ThumbnailUpload from "../../feature/create_message/components/ThumbnailUpload";
-import ImageUpload from "../../feature/create_message/components/ImageUpload";
-import { useMessageBordSWR } from "../../feature/messageBord/hooks/useMessageBordSWR";
+import { uploadImage } from "../../../feature/uploadImage/api/uploadImage";
+import { Message } from "../../../types/Message";
+import createMessage from "../../../feature/create_message/api/createMessage";
+import ThumbnailUpload from "../../../feature/create_message/components/ThumbnailUpload";
+import ImageUpload from "../../../feature/create_message/components/ImageUpload";
+import { useMessageBordSWR } from "../../../feature/messageBord/hooks/useMessageBordSWR";
 import { Typography } from "@mui/joy";
 import { Box } from "@mui/material";
-import useWindowsSize from "../../hooks/UseWindowsSize";
 type InputData = {
   userName: string;
   content: string;
@@ -37,7 +36,7 @@ const CreateMessage: NextPage = () => {
   const [uploadFile, setUploadFile] = useState<File>();
   const [avaterFile, setAvaterFile] = useState<File>();
   const [open, setOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSubmitting, setisSubmitting] = useState<boolean>(false);
   const [message, setMessage] = useState<String>();
   const handleReload = () => {
     window.location.reload();
@@ -78,9 +77,9 @@ const CreateMessage: NextPage = () => {
   };
   // メッセージ追加ボタン押下時
   const onSubmit: SubmitHandler<InputData> = async (data): Promise<void> => {
-    setIsLoading(true);
+    setisSubmitting(true);
     if (messageBordId) {
-      setIsLoading(true);
+      setisSubmitting(true);
       try {
         const messageId = v4();
         let thumbnail;
@@ -111,19 +110,26 @@ const CreateMessage: NextPage = () => {
         );
         throw err;
       } finally {
-        setIsLoading(false);
+        setisSubmitting(false);
       }
     } else {
       setMessage("URLをご確認の上再度送信してください");
-      setIsLoading(false);
+      setisSubmitting(false);
     }
   };
-  const { messageBordData, error } = useMessageBordSWR(messageBordId);
+  const { messageBordData, error, isLoading } =
+    useMessageBordSWR(messageBordId);
   if (error) return <div>エラーが発生しました</div>;
+  if (isLoading)
+    return (
+      <Box sx={{ height: "700px", textAlign: "center", paddingTop: "100px" }}>
+        データ取得中です。
+      </Box>
+    );
   if (!messageBordData)
     return (
       <Box sx={{ height: "700px", textAlign: "center", paddingTop: "100px" }}>
-        データ取得中。。。
+        該当データが存在しません。
       </Box>
     );
   return (
@@ -210,7 +216,7 @@ const CreateMessage: NextPage = () => {
               aria-describedby="alert-dialog-description"
             >
               <DialogTitle id="alert-dialog-title">
-                {isLoading
+                {isSubmitting
                   ? "送信中"
                   : message
                   ? ""
@@ -218,14 +224,14 @@ const CreateMessage: NextPage = () => {
               </DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                  {isLoading
+                  {isSubmitting
                     ? "少々お待ちください"
                     : message
                     ? message
                     : "送信したメッセージは編集できません"}
                 </DialogContentText>
               </DialogContent>
-              {isLoading ? (
+              {isSubmitting ? (
                 <></>
               ) : message ? (
                 <DialogActions>

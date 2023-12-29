@@ -8,8 +8,8 @@ import {
 export type Message = {
   id: string;
   userName: string;
-  thumbnail: String | undefined;
-  image: String | undefined;
+  thumbnail: string | undefined;
+  image: string | undefined;
   content: string;
   createdAt: Date;
   updatedAt: Date;
@@ -36,7 +36,7 @@ export const messageConverter: FirestoreDataConverter<Message> = {
     return {
       id: snapshot.id,
       userName: data.userName,
-      thumbnail: data.thumnail,
+      thumbnail: data.thumbnail,
       image: data.image,
       content: data.content,
       createdAt: data.createdAt,

@@ -3,26 +3,15 @@ import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
-import { Great_Vibes } from "next/font/google";
+import { Box } from "@mui/joy";
+import { GreatVidesFonts } from "../utility/fonts";
+import { getColor } from "../utility/getColor";
 
 type Props = {
   mainMessage: string;
   mainMessageColor: string;
   mainMessageSize: number;
   backgroundImage: string;
-};
-
-const GreatVidesFonts = Great_Vibes({
-  weight: "400",
-  subsets: ["latin"],
-});
-
-// 色のチェック
-const getColor = (colorString: string): string => {
-  if (colorString === "orangeAccent") {
-    return "orange";
-  }
-  return colorString;
 };
 
 const MessageBordTop: React.FC<Props> = ({
@@ -59,7 +48,7 @@ const MessageBordTop: React.FC<Props> = ({
           }}
         ></Typography>
         {/* メッセージ部分 */}
-        <Typography
+        <Box
           component="div"
           sx={{
             display: "flex",
@@ -90,7 +79,7 @@ const MessageBordTop: React.FC<Props> = ({
           <Typography component="p" sx={{ display: "block", fontSize: "7px" }}>
             {"寄せ書きのタイトルメッセージが入ります"}
           </Typography>
-        </Typography>
+        </Box>
       </CardContent>
     </Card>
   );
