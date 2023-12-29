@@ -75,7 +75,7 @@ const MessageBord: NextPage = () => {
               <Box
                 className="top"
                 sx={{
-                  height: height,
+                  height: { height },
                   position: "relative",
                   display: "flex",
                 }}
@@ -164,11 +164,17 @@ const MessageBord: NextPage = () => {
                 </Box>
                 <Box
                   component="div"
-                  sx={{ height: "100%", width: "100%", position: "absolute" }}
+                  sx={{
+                    height: "100%",
+                    width: "100%",
+                    position: "absolute",
+                  }}
                 >
                   <Image
                     src={messageBordWithMessage.messageBord.templateImageUrl}
                     alt=""
+                    // height={height}
+                    // width={width}
                     fill
                     style={{ objectFit: "cover" }}
                   />
