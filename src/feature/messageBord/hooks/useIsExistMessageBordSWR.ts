@@ -1,5 +1,5 @@
-import { isExistMessageBord } from "../api/api";
 import useSWR from "swr";
+import { isExistMessageBord } from "../api/isExistRegisterCode";
 
 export type FetchMessageBord = {
   isExist: boolean | undefined;

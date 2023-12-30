@@ -5,7 +5,7 @@ type Props = {
   id: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
-const ThumbnailUpload: React.FC<Props> = ({ id, onChange }) => {
+const MessageThumbnailUpload: React.FC<Props> = ({ id, onChange }) => {
   const [imageSrc, setSrc] = useState<string>();
 
   const handleImagePreview = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -45,4 +45,4 @@ const ThumbnailUpload: React.FC<Props> = ({ id, onChange }) => {
   );
 };
 
-export default ThumbnailUpload;
+export default MessageThumbnailUpload;

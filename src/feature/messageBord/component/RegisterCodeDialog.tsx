@@ -10,11 +10,9 @@ import {
 } from "@mui/joy";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import {
-  checkIsCorrectCode,
-  fetchMessageBordithMessage,
-} from "../../../feature/messageBord/api/api";
 import { MessageBordWithMessage } from "../../../types/MessageBordWithMessage";
+import { checkIsCorrectCode } from "../api/checkIsCorrectCode";
+import { fetchMessageBordithMessage } from "../api/fetchMessageBordWithMessage";
 
 type Props = {
   isShowDialog: boolean;
