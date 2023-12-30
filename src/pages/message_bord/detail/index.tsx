@@ -12,6 +12,7 @@ import { NextPage } from "next";
 import { getColor } from "../../../utility/getColor";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { RevealWrapper } from "next-reveal";
+import BottomMessageArea from "../../../feature/messageBord/component/BottomMessageArea";
 
 /**
  * 寄せ書きを確認する画面
@@ -232,6 +233,9 @@ const MessageBord: NextPage = () => {
                 </Box>
               </Box>
             </Box>
+            <BottomMessageArea
+              message={messageBordWithMessage.messageBord.lastMessage}
+            />
           </Box>
         </>
       )}

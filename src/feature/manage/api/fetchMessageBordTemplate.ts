@@ -1,5 +1,5 @@
 import { firebaseStore } from "../../../lib/firebase";
-import { collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { MessageBord, messageBordConverter } from "../../../types/MessageBord";
 
 const fetchMessageBordTemplateList = async (

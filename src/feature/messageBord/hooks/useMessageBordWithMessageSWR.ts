@@ -1,6 +1,6 @@
 import { MessageBordWithMessage } from "../../../types/MessageBordWithMessage";
-import { fetchMessageBordithMessage, isExistMessageBord } from "../api/api";
 import useSWR from "swr";
+import { fetchMessageBordithMessage } from "../api/fetchMessageBordWithMessage";
 
 export type FetchMessageBordWithMessage = {
   data: MessageBordWithMessage | undefined;

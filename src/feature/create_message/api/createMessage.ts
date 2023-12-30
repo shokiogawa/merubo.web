@@ -1,5 +1,5 @@
 import { firebaseStore } from "../../../lib/firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { Message, messageConverter } from "../../../types/Message";
 
 const createMessage = async (

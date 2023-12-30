@@ -4,7 +4,7 @@ import { createMessageBordTemplate } from "../api/createMessageBordTemplate";
 import { useRouter } from "next/router";
 import { createRandum } from "../../../utility/createRandum";
 import React, { ChangeEvent, useState } from "react";
-import UploadImageComponent from "../../uploadImage/component/uploadImageComponent";
+import UploadImageComponent from "../../uploadImage/component/UploadImageComponent";
 import { uploadImage } from "../../uploadImage/api/uploadImage";
 import { animationTemp } from "../../../const/animation";
 import { MainMessageColors } from "../../../const/mainMessageColor";

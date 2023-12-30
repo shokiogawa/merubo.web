@@ -8,7 +8,7 @@ type Props = {
   onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
-const ImageUpload: React.FC<Props> = ({ id, onChange }) => {
+const MessageImageUpload: React.FC<Props> = ({ id, onChange }) => {
   const [imageSrc, setSrc] = useState<string>("");
 
   const handleImagePreview = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +55,7 @@ const ImageUpload: React.FC<Props> = ({ id, onChange }) => {
           <Image
             alt={"name"}
             src={imageSrc}
+            fill
             layout="fill"
             objectFit="contain"
           />
@@ -64,4 +65,4 @@ const ImageUpload: React.FC<Props> = ({ id, onChange }) => {
   );
 };
 
-export default ImageUpload;
+export default MessageImageUpload;

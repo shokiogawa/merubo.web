@@ -15,11 +15,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { uploadImage } from "../../../feature/uploadImage/api/uploadImage";
 import { Message } from "../../../types/Message";
 import createMessage from "../../../feature/create_message/api/createMessage";
-import ThumbnailUpload from "../../../feature/create_message/components/ThumbnailUpload";
-import ImageUpload from "../../../feature/create_message/components/ImageUpload";
 import { useMessageBordSWR } from "../../../feature/messageBord/hooks/useMessageBordSWR";
 import { Typography } from "@mui/joy";
 import { Box } from "@mui/material";
+import MessageThumbnailUpload from "../../../feature/create_message/components/MessageThumbnailUpload";
+import MessageImageUpload from "../../../feature/create_message/components/MessageImageUpload";
 type InputData = {
   userName: string;
   content: string;
@@ -174,7 +174,7 @@ const CreateMessage: NextPage = () => {
                 >
                   あなたの写真
                 </Typography>
-                <ThumbnailUpload
+                <MessageThumbnailUpload
                   id={"avater"}
                   onChange={handleSetThumbnailImage}
                 />
@@ -192,7 +192,10 @@ const CreateMessage: NextPage = () => {
               <li className="item">
                 <p>写真</p>
                 <p className="sub-label">思い出の写真を送りましょう</p>
-                <ImageUpload id="image" onChange={handleSetUploadImage} />
+                <MessageImageUpload
+                  id="image"
+                  onChange={handleSetUploadImage}
+                />
               </li>
               <li className="item button-item">
                 <button onClick={handleSubmit(handleClickOpen)}>
