@@ -15,6 +15,7 @@ const MessageArea: React.FC<Props> = ({ message }) => {
           sx={{
             minHeight: "150px",
             margin: { xs: "50px 20px", md: "50px" },
+            boxShadow: "0 5px 10px 0 rgba(0, 0, 0, .5)",
           }}
         >
           <Box
@@ -60,6 +61,7 @@ const MessageArea: React.FC<Props> = ({ message }) => {
               {message.content}
             </Typography>
           </Box>
+          {/* 画像エリア */}
           {message.image && (
             <Box sx={{ margin: "12px auto" }}>
               <Image

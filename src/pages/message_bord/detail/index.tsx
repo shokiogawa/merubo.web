@@ -233,9 +233,11 @@ const MessageBord: NextPage = () => {
                 </Box>
               </Box>
             </Box>
-            <BottomMessageArea
-              message={messageBordWithMessage.messageBord.lastMessage}
-            />
+            {messageBordWithMessage.messageBord.lastMessage && (
+              <BottomMessageArea
+                message={messageBordWithMessage.messageBord.lastMessage}
+              />
+            )}
           </Box>
         </>
       )}
