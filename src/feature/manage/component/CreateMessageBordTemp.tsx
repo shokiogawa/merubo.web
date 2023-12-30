@@ -20,7 +20,7 @@ import {
   Typography,
 } from "@mui/joy";
 import MessageBordTop from "../../../components/MessageBordTop";
-import UploadImageComponent from "../../uploadImage/component/UploadImageComponent";
+import UploadImageComponent from "../../uploadImage/component/UploadImage";
 
 type Props = {
   isOpen: boolean;
