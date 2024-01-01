@@ -188,7 +188,7 @@ const CreateMessageBordTemp: React.FC<Props> = ({
                   <div>
                     <UploadImage
                       id="image"
-                      wrapName="テンプレート画像を保村"
+                      wrapName="テンプレート画像"
                       onChange={handleSetUploadImageFile}
                     />
                   </div>
