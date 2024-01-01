@@ -1,6 +1,6 @@
 import imageCompression from "browser-image-compression";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { firebaseStorage } from "../../../lib/firebase";
+import { firebaseStorage } from "../lib/firebase";
 type compressedImageOption = {
   initialQuality: number;
 };
