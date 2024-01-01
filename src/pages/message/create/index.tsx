@@ -12,14 +12,14 @@ import {
   DialogActions,
 } from "@material-ui/core/";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { uploadImage } from "../../../feature/uploadImage/api/uploadImage";
+import { uploadImage } from "../../../api/uploadImage";
 import { Message } from "../../../types/Message";
-import createMessage from "../../../feature/create_message/api/createMessage";
+import createMessage from "../../../feature/message/api/createMessage";
 import { useMessageBordSWR } from "../../../feature/messageBord/hooks/useMessageBordSWR";
 import { Typography } from "@mui/joy";
 import { Box } from "@mui/material";
-import MessageThumbnailUpload from "../../../feature/create_message/components/MessageThumbnailUpload";
-import MessageImageUpload from "../../../feature/create_message/components/MessageImageUpload";
+import MessageThumbnailUpload from "../../../feature/message/component/MessageThumbnailUpload";
+import UploadImage from "../../../components/UploadImage";
 type InputData = {
   userName: string;
   content: string;
@@ -192,8 +192,9 @@ const CreateMessage: NextPage = () => {
               <li className="item">
                 <p>写真</p>
                 <p className="sub-label">思い出の写真を送りましょう</p>
-                <MessageImageUpload
+                <UploadImage
                   id="image"
+                  wrapName="思い出の写真をアップロード"
                   onChange={handleSetUploadImage}
                 />
               </li>

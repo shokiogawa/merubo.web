@@ -4,7 +4,7 @@ import { createMessageBordTemplate } from "../api/createMessageBordTemplate";
 import { useRouter } from "next/router";
 import { createRandum } from "../../../utility/createRandum";
 import React, { ChangeEvent, useState } from "react";
-import { uploadImage } from "../../uploadImage/api/uploadImage";
+import { uploadImage } from "../../../api/uploadImage";
 import { animationTemp } from "../../../const/animation";
 import { MainMessageColors } from "../../../const/mainMessageColor";
 import { useSearchParams } from "next/navigation";
@@ -20,7 +20,7 @@ import {
   Typography,
 } from "@mui/joy";
 import MessageBordTop from "../../../components/MessageBordTop";
-import UploadImageComponent from "../../uploadImage/component/UploadImage";
+import UploadImage from "../../../components/UploadImage";
 
 type Props = {
   isOpen: boolean;
@@ -186,8 +186,9 @@ const CreateMessageBordTemp: React.FC<Props> = ({
                   />
                   <FormLabel>画像を挿入</FormLabel>
                   <div>
-                    <UploadImageComponent
+                    <UploadImage
                       id="image"
+                      wrapName="テンプレート画像を保村"
                       onChange={handleSetUploadImageFile}
                     />
                   </div>
