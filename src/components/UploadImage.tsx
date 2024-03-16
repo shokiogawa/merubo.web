@@ -1,7 +1,8 @@
 import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
 import Image from "next/image";
-import { Card, CardContent } from "@mui/joy";
-import { CameraAltOutlined } from "@material-ui/icons";
+import { Card } from "@mui/joy";
+import { ImageOutlined } from "@mui/icons-material";
+import { Box, Typography } from "@mui/material";
 
 type Props = {
   id: string;
@@ -39,21 +40,26 @@ const UploadImage: React.FC<Props> = ({ id, onChange, wrapName }) => {
         onChange={handleImagePreview}
       />
       {imageSrc === "" ? (
-        <Card style={{ height: "110px" }}>
-          <CardContent>
-            <div className="merubo-card">
-              <CameraAltOutlined
-                className="camera-icon"
-                style={{ height: "35px", width: "35px" }}
-              />
-              <p className="title">{wrapName}</p>
-            </div>
-          </CardContent>
+        <Card style={{ border: "1px dashed orange" }} sx={{ height: "100%" }}>
+          <Typography component="div" sx={{ textAlign: "center" }}>
+            <ImageOutlined
+              sx={{ color: "orange" }}
+              style={{ height: "10%", width: "20%" }}
+            ></ImageOutlined>
+            <Typography fontSize="15px">{wrapName}</Typography>
+          </Typography>
         </Card>
       ) : (
-        <div className="image-area">
-          <Image alt={"name"} src={imageSrc} width={100} height={100} />
-        </div>
+        <Box component="div" className="image-area">
+          <Image
+            alt={"name"}
+            src={imageSrc}
+            fill
+            style={{
+              objectFit: "contain",
+            }}
+          />
+        </Box>
       )}
     </label>
   );

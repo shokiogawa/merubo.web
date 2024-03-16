@@ -7,7 +7,7 @@ type Props = {
 };
 const MessageThumbnailUpload: React.FC<Props> = ({ id, onChange }) => {
   const [imageSrc, setSrc] = useState<string>();
-
+  // プレビュー表示
   const handleImagePreview = async (event: ChangeEvent<HTMLInputElement>) => {
     const { name, files } = event.target;
     if (files == null) {
@@ -37,7 +37,7 @@ const MessageThumbnailUpload: React.FC<Props> = ({ id, onChange }) => {
         />
         <Avatar
           alt={id}
-          src={imageSrc ?? imageSrc}
+          src={imageSrc}
           style={{ height: "70px", width: "70px" }}
         ></Avatar>
       </label>

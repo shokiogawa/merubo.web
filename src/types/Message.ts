@@ -11,6 +11,7 @@ export type Message = {
   thumbnail: string | undefined;
   image: string | undefined;
   content: string;
+  orderNumber: number;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -24,6 +25,7 @@ export const messageConverter: FirestoreDataConverter<Message> = {
       thumbnail: message.thumbnail,
       image: message.image,
       content: message.content,
+      orderNumber: message.orderNumber,
       createdAt: message.createdAt,
       updatedAt: message.updatedAt,
     };
@@ -39,6 +41,7 @@ export const messageConverter: FirestoreDataConverter<Message> = {
       thumbnail: data.thumbnail,
       image: data.image,
       content: data.content,
+      orderNumber: data.orderNumber,
       createdAt: data.createdAt,
       updatedAt: data.updatedAt,
     };

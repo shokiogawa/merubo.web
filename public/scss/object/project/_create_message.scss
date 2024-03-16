@@ -1,12 +1,14 @@
 .merubo-section {
-  @include lg {
-    width: 500px;
+  @include md {
+    width: 700px;
+    padding-left: 50px;
+    padding-right: 50px;
   }
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: 0 auto;
   .merubo-title {
-    padding-bottom: 0px;
+    padding-bottom: 20px;
     .text {
       text-align: center;
     }
@@ -66,6 +68,8 @@
 // }
 
 .merubo-card {
+  height: 100%;
+  width: 100%;
   text-align: center;
   .title {
     font-size: 15px;
