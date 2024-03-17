@@ -11,7 +11,7 @@ export type Message = {
   thumbnail: string | undefined;
   image: string | undefined;
   content: string;
-  orderNumber: number;
+  orderNumber?: number;
   createdAt: Date;
   updatedAt: Date;
 };

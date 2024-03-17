@@ -21,5 +21,7 @@ export const fetchMessageList = async (
   messageQuerySnapshot.forEach((doc) => {
     messageList.push(doc.data());
   });
+
+  messageList.sort((a, b) => (a.orderNumber ?? 0) - (b.orderNumber ?? 0));
   return messageList;
 };
