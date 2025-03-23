@@ -10,10 +10,16 @@ import RegisterCodeDialog from "../../../feature/messageBord/component/RegisterC
 import { GreatVidesFonts } from "../../../utility/fonts";
 import { NextPage } from "next";
 import { getColor } from "../../../utility/getColor";
-import { Player } from "@lottiefiles/react-lottie-player";
 import { RevealWrapper } from "next-reveal";
 import BottomMessageArea from "../../../feature/messageBord/component/BottomMessageArea";
+import dynamic from "next/dynamic";
 
+const LottiePlayer = dynamic(
+  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
+  {
+    ssr: false,
+  }
+);
 /**
  * 寄せ書きを確認する画面
  * @returns
@@ -100,12 +106,12 @@ const MessageBord: NextPage = () => {
                       width: "100%",
                     }}
                   >
-                    <Player
+                    <LottiePlayer
                       autoplay
                       loop
                       src={messageBordWithMessage.messageBord.animationUrl}
                       style={{ height: "300px", width: "300px" }}
-                    ></Player>
+                    ></LottiePlayer>
                   </Box>
                   {/* 背景の白 */}
                   <Box
