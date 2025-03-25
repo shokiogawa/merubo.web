@@ -7,7 +7,6 @@ export const Footer = () => {
       component="footer"
       sx={{
         textAlign: "center",
-        height: "400px",
         border: "solid 1px rgba(255, 161, 51, 1)",
         // padding: "10px 0px",
         margin: "20px 0px",
@@ -15,7 +14,7 @@ export const Footer = () => {
       }}
     >
       <Container sx={{ padding: "40px 0px 0px" }}>
-        <MeruboIcon />
+        {/* <MeruboIcon /> */}
         <Store />
         <Typography component="p" sx={{ paddingTop: "15px", fontSize: "17px" }}>
           Copyright © 2023 shouki. All Rights Reserved.
