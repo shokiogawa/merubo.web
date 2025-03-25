@@ -63,6 +63,9 @@ const Home: NextPage = () => {
                 <br />
                 web上 or アプリで寄せ書きを確認できます。
               </Typography>
+              <Box sx={{ margin: "40px 15px 15px 15px" }}>
+                <Store />
+              </Box>
               {/* <Button
                 variant="contained"
                 sx={{
