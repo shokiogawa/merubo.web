@@ -11,11 +11,10 @@ export const checkIsCorrectCode = async (
   registerCode: string,
   messageBordId: string
 ): Promise<boolean> => {
-  const coderef = doc(
-    firebaseStore,
-    "register_code",
-    registerCode
-  ).withConverter(registerCoeConverter);
+  const trinCode = registerCode.trim();
+  const coderef = doc(firebaseStore, "register_code", trinCode).withConverter(
+    registerCoeConverter
+  );
 
   const docSnap = await getDoc(coderef);
   const data = docSnap.data();
