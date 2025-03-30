@@ -70,8 +70,8 @@ const RegisterCodeDialog: React.FC<Props> = ({
               <Input
                 {...register("registerCode", {
                   required: "コードを入力してください。",
-                  minLength: { value: 16, message: "コードが不正です。" },
-                  maxLength: { value: 16, message: "コードが不正です。" },
+                  minLength: { value: 10, message: "コードが不正です。" },
+                  maxLength: { value: 20, message: "コードが不正です。" },
                 })}
                 type="text"
                 sx={{ height: "40px" }}
