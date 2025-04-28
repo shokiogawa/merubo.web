@@ -25,6 +25,10 @@ class MyDocument extends Document {
           <link rel="manifest" href="/image/favicons/site.webmanifest" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
+          <meta
+            name="google-adsense-account"
+            content="ca-pub-1647698725066768"
+          ></meta>
         </Head>
         <body>
           <Main />
