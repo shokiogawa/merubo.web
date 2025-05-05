@@ -1,9 +1,8 @@
 import { Box, Typography } from "@mui/joy";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useIsExistMessageBordSWR } from "../../../feature/messageBord/hooks/useIsExistMessageBordSWR";
 import { MessageBordWithMessage } from "../../../types/MessageBordWithMessage";
-import useWindowsSize from "../../../hooks/UseWindowsSize";
 import Image from "next/image";
 import MessageArea from "../../../feature/messageBord/component/MessageArea";
 import RegisterCodeDialog from "../../../feature/messageBord/component/RegisterCodeDialog";
@@ -13,6 +12,9 @@ import { getColor } from "../../../utility/getColor";
 import { RevealWrapper } from "next-reveal";
 import BottomMessageArea from "../../../feature/messageBord/component/BottomMessageArea";
 import dynamic from "next/dynamic";
+import { fetchMessageBordithMessage } from "../../../feature/messageBord/api/fetchMessageBordWithMessage";
+import { checkIsCorrectCode } from "../../../feature/messageBord/api/checkIsCorrectCode";
+import useWindowsSize from "../../../hooks/UseWindowsSize";
 
 const LottiePlayer = dynamic(
   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
@@ -27,13 +29,29 @@ const LottiePlayer = dynamic(
 const MessageBord: NextPage = () => {
   const router = useRouter();
   const messageBordId = router.query.messageBordId as string;
-
+  const [isShowDialog, setIsShowDialog] = useState(true);
   const [messageBordWithMessage, setMessageBordWithMessage] =
     useState<MessageBordWithMessage>();
-
   const handleMessageBordWithMessage = (data: MessageBordWithMessage) => {
     setMessageBordWithMessage(data);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const registerCode = localStorage.getItem(messageBordId);
+      if (
+        registerCode &&
+        (await checkIsCorrectCode(registerCode, messageBordId))
+      ) {
+        setIsShowDialog(false);
+        const messageBordData = await fetchMessageBordithMessage(messageBordId);
+        handleMessageBordWithMessage(messageBordData);
+      }
+    };
+    fetchData();
+    return;
+  }, [messageBordId]);
+
   const { width, height } = useWindowsSize();
 
   const { isExist, error, isLoading } = useIsExistMessageBordSWR(messageBordId);
@@ -57,6 +75,7 @@ const MessageBord: NextPage = () => {
         <Typography component="p">寄せ書きが存在しません。</Typography>
       </Box>
     );
+
   return (
     <Box component="section" sx={{}}>
       {/* ダイアログ */}
