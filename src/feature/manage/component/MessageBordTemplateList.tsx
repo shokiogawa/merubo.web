@@ -47,7 +47,7 @@ const MessageBordTemplateList: React.FC<Props> = ({ categoryId }) => {
                   mainMessage={messageBord.mainMessage}
                   mainMessageColor={messageBord.mainMessageColor}
                   mainMessageSize={messageBord.mainMessageSize}
-                  backgroundImage={messageBord.templateImageUrl}
+                  backgroundImage={messageBord.templateImageUrl || ""}
                 />
               </ListItem>
             </Grid>

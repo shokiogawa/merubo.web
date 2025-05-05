@@ -178,7 +178,9 @@ const MessageBord: NextPage = () => {
                   }}
                 >
                   <Image
-                    src={messageBordWithMessage.messageBord.templateImageUrl}
+                    src={
+                      messageBordWithMessage.messageBord.templateImageUrl || ""
+                    }
                     alt=""
                     // height={height}
                     // width={width}
