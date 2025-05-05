@@ -6,15 +6,22 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import FirebaseAuthProvider from "../components/FirebaseAuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SnackbarProvider } from "notistack";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient();
   return (
     <>
-      <FirebaseAuthProvider allowPaths={null}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </FirebaseAuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <FirebaseAuthProvider allowPaths={null}>
+          <SnackbarProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </SnackbarProvider>
+        </FirebaseAuthProvider>
+      </QueryClientProvider>
     </>
   );
 }

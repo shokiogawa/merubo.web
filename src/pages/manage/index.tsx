@@ -1,18 +1,15 @@
 import { NextPage } from "next";
-import CategoryListComponent from "../../feature/manage/component/CategoryList";
 import useIsLogin from "../../hooks/UseIsLogin";
 import { useContext } from "react";
 import { FirebaseAuthContext } from "../../components/FirebaseAuthProvider";
+import ManagePresentation from "../../feature/manage/ManagePresentation";
+import ManageContainer from "../../feature/manage/ManageContainer";
 
 const Manage: NextPage = () => {
   const userContext = useContext(FirebaseAuthContext);
   useIsLogin("/login");
   if (userContext.currentUser) {
-    return (
-      <section className="category">
-        <CategoryListComponent />
-      </section>
-    );
+    return <ManageContainer />;
   } else {
     return (
       <section>

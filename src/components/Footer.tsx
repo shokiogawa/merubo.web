@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/joy";
 import Store from "./Store";
-import MeruboIcon from "./MeruboIcon";
-export const Footer = () => {
+import { memo } from "react";
+export const Footer = memo(() => {
   return (
     <Box
       component="footer"
@@ -22,4 +22,6 @@ export const Footer = () => {
       </Container>
     </Box>
   );
-};
+});
+
+Footer.displayName = "Footer";

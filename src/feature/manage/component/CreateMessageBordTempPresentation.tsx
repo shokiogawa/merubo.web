@@ -1,10 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { MessageBord } from "../../../types/MessageBord";
-import { createMessageBordTemplate } from "../api/createMessageBordTemplate";
-import { useRouter } from "next/router";
 import { createRandum } from "../../../utility/createRandum";
 import React, { ChangeEvent, useState } from "react";
-import { uploadImage } from "../../../api/uploadImage";
 import { animationTemp } from "../../../const/animation";
 import { MainMessageColors } from "../../../const/mainMessageColor";
 import { useSearchParams } from "next/navigation";
@@ -25,16 +22,20 @@ import UploadImage from "../../../components/UploadImage";
 type Props = {
   isOpen: boolean;
   handlerClose: () => void;
+  onCreateMessageBordTemp: (
+    categoryId: string,
+    messageBord: MessageBord,
+    file: File
+  ) => Promise<void>;
   categoryId: string;
 };
 
-const CreateMessageBordTemp: React.FC<Props> = ({
+const CreateMessageBordTempPresentation: React.FC<Props> = ({
   isOpen,
   handlerClose,
   categoryId,
+  onCreateMessageBordTemp,
 }) => {
-  const router = useRouter();
-
   const searchParam = useSearchParams();
   const categoryName = searchParam.get("category") as string;
   const {
@@ -95,41 +96,28 @@ const CreateMessageBordTemp: React.FC<Props> = ({
     data
   ): Promise<void> => {
     if (!uploadImageFile) return;
+    const tempMessageBordId = createRandum(19);
 
-    try {
-      setMessage("登録中。。。。。");
-      const tempMessageBordId = createRandum(19);
-      // 背景画像
-      const filePath = `message_bord_template/${uploadImageFile.name}`;
-      const imageUrl = await uploadImage(uploadImageFile, filePath, false); // 例外あり
+    const messageBord: MessageBord = {
+      id: tempMessageBordId,
+      receiverUserName: "寄せ書き受取人の名前が入ります",
+      lastMessage: "最後の全員からのメッセージが入ります",
+      title: "寄せ書きのタイトルメッセージが入ります",
+      ownerUserName: "田中直哉",
+      // TODO: ver1のために一応残している
+      categoryEnum: "graduation",
+      // 受け取ったカテゴリーを入れる
+      category: categoryName,
+      status: "edit",
+      mainMessage: data.mainMessage,
+      mainMessageColor: mainMessageColor,
+      mainMessageSize: data.mainMessageSize,
+      animationUrl: animationTemp,
+      isAnimationLoop: false,
+    };
 
-      const messageBord: MessageBord = {
-        id: tempMessageBordId,
-        receiverUserName: "寄せ書き受取人の名前が入ります",
-        lastMessage: "最後の全員からのメッセージが入ります",
-        title: "寄せ書きのタイトルメッセージが入ります",
-        ownerUserName: "田中直哉",
-        // TODO: ver1のために一応残している
-        categoryEnum: "graduation",
-        // 受け取ったカテゴリーを入れる
-        category: categoryName,
-        templateImageUrl: imageUrl,
-        status: "edit",
-        mainMessage: data.mainMessage,
-        mainMessageColor: mainMessageColor,
-        mainMessageSize: data.mainMessageSize,
-        animationUrl: animationTemp,
-        isAnimationLoop: false,
-      };
-
-      await createMessageBordTemplate(categoryId, messageBord);
-      reset({ mainMessage: "", mainMessageColor: "", mainMessageSize: 40 });
-      setMessage("成功しました。");
-    } catch (err) {
-      // TODO: エラー処理
-      console.error(err);
-      setMessage("エラーが発生しました。");
-    }
+    await onCreateMessageBordTemp(categoryId, messageBord, uploadImageFile);
+    reset({ mainMessage: "", mainMessageColor: "", mainMessageSize: 40 });
   };
 
   return (
@@ -220,4 +208,4 @@ const CreateMessageBordTemp: React.FC<Props> = ({
   );
 };
 
-export default CreateMessageBordTemp;
+export default CreateMessageBordTempPresentation;

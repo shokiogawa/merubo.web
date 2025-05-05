@@ -14,10 +14,8 @@ export const createMessageBordTemplate = async (
       "message_bord_template",
       messageBord.id
     ).withConverter(messageBordConverter);
-    await setDoc(messageBordRef, messageBord).then(() => {
-      console.log("成功");
-    });
+    await setDoc(messageBordRef, messageBord).then(() => {});
   } catch (err) {
-    console.error(err);
+    throw err;
   }
 };

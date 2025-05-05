@@ -1,8 +1,9 @@
-import { useMessageBordTemplateListSWR } from "../hooks/useMessageBordTemplateSWR";
-import { Button, Grid, ListItem } from "@mui/joy";
 import MessageBordTop from "../../../components/MessageBordTop";
-import CreateMessageBordTemp from "./CreateMessageBordTemp";
+import CreateMessageBordTemp from "./CreateMessageBordTempPresentation";
 import { useState } from "react";
+import { Box, Button, Grid, ListItem } from "@mui/material";
+import useMessageBordTemplateListQuery from "../hooks/useMessageBordTemplateListQuery";
+import CreateMessagebordTempContainer from "./CreateMessageBordTempContainer";
 
 type Props = {
   categoryId: string;
@@ -18,8 +19,8 @@ const MessageBordTemplateList: React.FC<Props> = ({ categoryId }) => {
   const handlerIsClose = () => {
     setIsOpen(false);
   };
-  const { messageBordTemplateDatas, error } =
-    useMessageBordTemplateListSWR(categoryId);
+  const { data, error, isLoading, refetch } =
+    useMessageBordTemplateListQuery(categoryId);
   // 色のチェック
   const getColor = (colorString: string): string => {
     if (colorString === "orangeAccent") {
@@ -28,7 +29,8 @@ const MessageBordTemplateList: React.FC<Props> = ({ categoryId }) => {
     return colorString;
   };
   if (error) return <div>エラーが発生しました。</div>;
-  if (!messageBordTemplateDatas) return <div>loading......</div>;
+  if (!data)
+    return <Box sx={{ height: "calc(100vh - 340px)" }}>loading......</Box>;
   return (
     <>
       <Grid
@@ -37,8 +39,8 @@ const MessageBordTemplateList: React.FC<Props> = ({ categoryId }) => {
         columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ flexGrow: 1 }}
       >
-        {messageBordTemplateDatas &&
-          messageBordTemplateDatas.map((messageBord) => (
+        {data &&
+          data.map((messageBord) => (
             <Grid key={messageBord.id}>
               <ListItem>
                 <MessageBordTop
@@ -57,7 +59,7 @@ const MessageBordTemplateList: React.FC<Props> = ({ categoryId }) => {
       >
         テンプレートを作成する
       </Button>
-      <CreateMessageBordTemp
+      <CreateMessagebordTempContainer
         isOpen={isOpen}
         handlerClose={handlerIsClose}
         categoryId={categoryId}

@@ -13,7 +13,7 @@ export type MessageBord = {
   ownerUserName: string;
   categoryEnum: string;
   category: string;
-  templateImageUrl: string;
+  templateImageUrl?: string | undefined;
   animationUrl: string;
   isAnimationLoop: boolean;
   status: string;
