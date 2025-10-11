@@ -1,6 +1,6 @@
-import { firebaseStore } from "../../../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { registerCoeConverter } from "../../../types/RegisterCode";
+import { firebaseStore } from "../../../../lib/firebase";
+import { registerCoeConverter } from "../../../../types/RegisterCode";
 /**
  * 登録コードが一致しているかどうかの確認。
  * @param registerCode

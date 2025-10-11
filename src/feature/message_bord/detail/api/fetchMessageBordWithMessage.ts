@@ -1,4 +1,4 @@
-import { MessageBordWithMessage } from "../../../types/MessageBordWithMessage";
+import { MessageBordWithMessage } from "../../../../types/MessageBordWithMessage";
 import fetchMessageBord from "./fetchMessageBord";
 import { fetchMessageList } from "./fetchMessageList";
 /**

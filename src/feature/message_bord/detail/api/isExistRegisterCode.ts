@@ -1,5 +1,5 @@
-import { firebaseStore } from "../../../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { firebaseStore } from "../../../../lib/firebase";
 /**
  * 寄せ書きの存在チェック
  * @param messageBordId

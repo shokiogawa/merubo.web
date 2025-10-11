@@ -1,4 +1,4 @@
-import { MessageBordWithMessage } from "../../../types/MessageBordWithMessage";
+import { MessageBordWithMessage } from "../../../../types/MessageBordWithMessage";
 import useSWR from "swr";
 import { fetchMessageBordithMessage } from "../api/fetchMessageBordWithMessage";
 

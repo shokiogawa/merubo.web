@@ -1,25 +1,32 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import React, { ChangeEvent, useState } from "react";
 import Link from "next/link";
 import { v4 } from "uuid";
-import { useRouter } from "next/router";
 import { Button } from "@material-ui/core/";
 import { useForm } from "react-hook-form";
 import { uploadImage } from "../../../api/uploadImage";
 import { Message } from "../../../types/Message";
 import createMessage from "../../../feature/message/api/createMessage";
-import { useMessageBordSWR } from "../../../feature/messageBord/hooks/useMessageBordSWR";
 import { Box, InputLabel, TextField, Typography } from "@mui/material";
 import MessageThumbnailUpload from "../../../feature/message/component/MessageThumbnailUpload";
 import UploadImage from "../../../components/UploadImage";
 import MeruboDialog from "../../../components/MeruboDialog";
+import { MessageBord } from "../../../types/MessageBord";
+import fetchMessageBord from "../../../feature/message_bord/detail/api/fetchMessageBord";
 type InputData = {
   userName: string;
   content: string;
 };
-const CreateMessage: NextPage = () => {
-  const router = useRouter();
-  const messageBordId = router.query.messageBordId as string;
+
+type CreateMessagePageProps = {
+  messageBordId: string;
+  messageBordData: MessageBord;
+};
+
+const CreateMessage: NextPage<CreateMessagePageProps> = ({
+  messageBordId,
+  messageBordData,
+}) => {
   // フォーム
   const {
     register,
@@ -92,21 +99,6 @@ const CreateMessage: NextPage = () => {
     await createMessage(messageBordId, message);
   };
 
-  const { messageBordData, error, isLoading } =
-    useMessageBordSWR(messageBordId);
-  if (error) return <div>エラーが発生しました</div>;
-  if (isLoading)
-    return (
-      <Box sx={{ height: "700px", textAlign: "center", paddingTop: "100px" }}>
-        データ取得中です。
-      </Box>
-    );
-  if (!messageBordData)
-    return (
-      <Box sx={{ height: "700px", textAlign: "center", paddingTop: "100px" }}>
-        該当データが存在しません。
-      </Box>
-    );
   return (
     <>
       {messageBordData.status === "edit" ? (
@@ -288,6 +280,43 @@ const CreateMessage: NextPage = () => {
       )}
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<
+  CreateMessagePageProps
+> = async (context) => {
+  const { messageBordId } = context.query;
+
+  // messageBordIdが存在しない、または文字列でない場合
+  if (!messageBordId || typeof messageBordId !== "string") {
+    return {
+      notFound: true,
+    };
+  }
+
+  try {
+    // サーバーサイドで寄せ書きデータを取得
+    const messageBordData = await fetchMessageBord(messageBordId);
+
+    // データが存在しない場合
+    if (!messageBordData) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        messageBordId,
+        messageBordData,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching message board:", error);
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export default CreateMessage;

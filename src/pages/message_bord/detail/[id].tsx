@@ -12,9 +12,9 @@ import dynamic from "next/dynamic";
 import useWindowsSize from "../../../hooks/UseWindowsSize";
 import RegisterCodeDialog from "../../../feature/message_bord/detail/component/RegisterCodeDialog";
 import { checkIsCorrectCode } from "../../../feature/message_bord/detail/api/checkIsCorrectCode";
-import { fetchMessageBordithMessage } from "../../../feature/message_bord/detail/api/fetchMessageBordWithMessage";
 import MessageArea from "../../../feature/message_bord/detail/component/MessageArea";
 import BottomMessageArea from "../../../feature/message_bord/detail/component/BottomMessageArea";
+import { fetchMessageBordithMessage } from "../../../feature/message_bord/detail/api/fetchMessageBordWithMessage";
 
 const LottiePlayer = dynamic(
   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
@@ -26,9 +26,10 @@ const LottiePlayer = dynamic(
  * 寄せ書きを確認する画面
  * @returns
  */
-const MessageBord: NextPage = () => {
+const MessageBordDetail: NextPage = () => {
   const router = useRouter();
-  const messageBordId = router.query.messageBordId as string;
+  const { id } = router.query;
+  const messageBordId = id as string;
   const [isShowDialog, setIsShowDialog] = useState(true);
   const [messageBordWithMessage, setMessageBordWithMessage] =
     useState<MessageBordWithMessage>();
@@ -272,4 +273,4 @@ const MessageBord: NextPage = () => {
   );
 };
 
-export default MessageBord;
+export default MessageBordDetail;

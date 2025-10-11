@@ -1,6 +1,6 @@
-import { firebaseStore } from "../../../lib/firebase";
 import { collection, getDocs, query } from "firebase/firestore";
-import { Message, messageConverter } from "../../../types/Message";
+import { firebaseStore } from "../../../../lib/firebase";
+import { Message, messageConverter } from "../../../../types/Message";
 /**
  *
  * @param messageBordId メッセージ一覧を取得
