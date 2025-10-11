@@ -10,9 +10,9 @@ import {
 } from "@mui/joy";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { MessageBordWithMessage } from "../../../types/MessageBordWithMessage";
 import { checkIsCorrectCode } from "../api/checkIsCorrectCode";
 import { fetchMessageBordithMessage } from "../api/fetchMessageBordWithMessage";
+import { MessageBordWithMessage } from "../../../../types/MessageBordWithMessage";
 
 type Props = {
   isShowDialog: boolean;
@@ -54,6 +54,10 @@ const RegisterCodeDialog: React.FC<Props> = ({
       return;
     }
 
+    // コードが正しい場合、ローカルストレージに、key: messageBordId、value: registerCodeを保存する
+    localStorage.setItem(messageBordId, data.registerCode);
+
+    // router.push(`/message_bord/detail/${messageBordId}`);
     //コードが適切の場合、データを入れる
     const messageBordData = await fetchMessageBordithMessage(messageBordId);
     handleMessageBordWithMessage(messageBordData);

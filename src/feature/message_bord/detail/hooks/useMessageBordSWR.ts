@@ -1,6 +1,6 @@
 import { type } from "os";
 import useSWR from "swr";
-import { MessageBord } from "../../../types/MessageBord";
+import { MessageBord } from "../../../../types/MessageBord";
 import fetchMessageBord from "../api/fetchMessageBord";
 
 export type FetchMessageBord = {
