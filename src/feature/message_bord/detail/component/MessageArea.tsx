@@ -1,7 +1,7 @@
 import { Box, Typography, Card, Avatar } from "@mui/joy";
 import Image from "next/image";
-import { Message } from "../../../types/Message";
 import { RevealWrapper } from "next-reveal";
+import { Message } from "../../../../types/Message";
 type Props = {
   message: Message;
 };
