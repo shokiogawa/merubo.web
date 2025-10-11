@@ -80,4 +80,3 @@ const MessageArea: React.FC<Props> = ({ message }) => {
 };
 
 export default MessageArea;
-// Merge
