@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import useIsLogin from "../../hooks/UseIsLogin";
 import { useContext } from "react";
 import { FirebaseAuthContext } from "../../components/FirebaseAuthProvider";
@@ -9,12 +10,24 @@ const Manage: NextPage = () => {
   const userContext = useContext(FirebaseAuthContext);
   useIsLogin("/login");
   if (userContext.currentUser) {
-    return <ManageContainer />;
+    return (
+      <>
+        <Head>
+          <meta name="robots" content="noindex,nofollow" />
+        </Head>
+        <ManageContainer />
+      </>
+    );
   } else {
     return (
-      <section>
-        <p>ログインしていません。</p>
-      </section>
+      <>
+        <Head>
+          <meta name="robots" content="noindex,nofollow" />
+        </Head>
+        <section>
+          <p>ログインしていません。</p>
+        </section>
+      </>
     );
   }
 };
